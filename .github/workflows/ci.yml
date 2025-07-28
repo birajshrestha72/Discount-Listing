@@ -13,7 +13,8 @@ jobs:
     services:
       mongo:
         image: mongo:latest
-        ports: [27017:27017]
+        ports:
+          - 27017:27017
         options: >-
           --health-cmd="mongosh --eval 'db.adminCommand(\"ping\")'"
           --health-interval=10s
@@ -36,16 +37,11 @@ jobs:
         run: npm test -- --watchAll=false
         working-directory: ./
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Install backend dependencies
-        run: pip install -r requirements.txt
-        working-directory: ./backend
+        run: npm install
+        working-directory: ./backend-node
 
       # Uncomment and add backend tests if you have them
       # - name: Run backend tests
-      #   run: pytest
-      #   working-directory: ./backend
+      #   run: npm test
+      #   working-directory: ./backend-node

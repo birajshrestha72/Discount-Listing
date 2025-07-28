@@ -1,0 +1,52 @@
+name: CIpipeline {
+t any
+on:    environment {
+  push:rhubusername/discount-backend"
+    branches: [main]
+  pull_request:
+    branches: [main]Clone') {
+
+jobs:                checkout scm
+  build-and-test:            }
+    runs-on: ubuntu-latest
+nd Docker Image') {
+    services:            steps {
+      mongo:   dir('backend-node') {
+        image: mongo:latest        script {
+        ports:ker.build(env.DOCKER_IMAGE)
+          - 27017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.adminCommand(\"ping\")'"
+          --health-interval=10s
+          --health-timeout=5s Docker Image') {
+          --health-retries=5
+                dir('..') {
+    steps:          script {
+      - uses: actions/checkout@v4er.build('yourdockerhubusername/discount-frontend', '.')
+
+      - name: Set up Node.js   }
+        uses: actions/setup-node@v4
+        with:        }
+          node-version: '20'
+
+      - name: Install frontend dependencieskend and frontend tests here (placeholder)'
+        run: npm install            }
+        working-directory: ./
+
+      - name: Run frontend tests
+        run: npm test -- --watchAll=false                branch 'main'
+        working-directory: ./
+
+      - name: Install backend dependencies   withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+        run: npm install
+        working-directory: ./backend-node                        docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
+nv.DOCKER_IMAGE).push()
+      # Uncomment and add backend tests if you have themurdockerhubusername/discount-frontend').push()
+      # - name: Run backend tests
+      #   run: npm test                    }
+      #   working-directory: ./backend-node
+        always {
+            cleanWs()
+        }
+    }
+}
