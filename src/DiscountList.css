@@ -1,3 +1,4 @@
+
 /* Minimalist flat green theme */
 .discount-list-container {
   background: #e8f5e9;
@@ -14,8 +15,8 @@
 }
 .discount-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
   background: #a5d6a7;
   color: #1b5e20;
   margin-bottom: 1rem;
@@ -29,6 +30,14 @@
 }
 .discount-title {
   font-weight: 600;
+  font-size: 1.2rem;
+  color: #256029;
+}
+.discount-details {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  font-size: 1rem;
 }
 .discount-value {
   background: #388e3c;
@@ -36,4 +45,12 @@
   padding: 0.3em 0.8em;
   border-radius: 4px;
   font-size: 1rem;
+  font-weight: 500;
+}
+.discount-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 0.95rem;
+  color: #388e3c;
 }
