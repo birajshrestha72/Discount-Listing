@@ -2,20 +2,47 @@ version: '3.8'
 services:
   mongo:
     image: mongo:latest
-    restart: always
+    container_name: mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
-      - mongo_data:/data/db
+      - mongo-data:/data/db
 
-  app:
-    build: .
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    container_name: backend
+    working_dir: /app/backend
+    command: npm start
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/discount
+      - PORT=5000
     ports:
-      - 5000:5000
-      - 3000:3000
+      - "5000:5000"
     depends_on:
       - mongo
+    volumes:
+      - ./backend:/app/backend
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    container_name: frontend
+    working_dir: /app/frontend
+    command: npm start
     environment:
-      - MONGO_URI=mongodb://mongo:27017/discount_db
+      - PORT=3000
+      - REACT_APP_API_URL=http://localhost:5000/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app/frontend
+
 volumes:
-  mongo_data:
+  mongo-data:

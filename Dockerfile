@@ -2,18 +2,17 @@
 # Build backend
 FROM node:20 AS backend
 WORKDIR /app/backend
-COPY backend-node/package*.json ./
+COPY backend/package*.json ./
 RUN npm install
-COPY backend-node .
+COPY backend .
 
 # Build frontend
 FROM node:20 AS frontend
 WORKDIR /app/frontend
-COPY package.json package-lock.json ./
+COPY frontend/package*.json ./
 RUN npm install
-COPY public ./public
-COPY src ./src
-COPY .env ./
+COPY frontend/public ./public
+COPY frontend/src ./src
 RUN npm run build
 
 # Final image
