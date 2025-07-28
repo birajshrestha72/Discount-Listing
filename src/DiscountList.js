@@ -16,8 +16,17 @@ function DiscountList() {
       <ul className="discount-list">
         {discounts.map(discount => (
           <li key={discount._id} className="discount-item">
-            <span className="discount-title">{discount.title}</span>
-            <span className="discount-value">{discount.value}%</span>
+            <div className="discount-title">{discount.product_name}</div>
+            <div className="discount-details">
+              <span>Original: <b>Rs. {discount.price}</b></span>
+              <span className="discount-value">-{discount.discount_percent}%</span>
+              <span>Now: <b>Rs. {discount.discounted_price}</b></span>
+            </div>
+            <div className="discount-meta">
+              <span>Category: {discount.category}</span>
+              <span>City: {discount.city}</span>
+              <span>Valid: {discount.start_date} to {discount.end_date}</span>
+            </div>
           </li>
         ))}
       </ul>
@@ -25,4 +34,3 @@ function DiscountList() {
   );
 }
 
-export default DiscountList;
