@@ -31,13 +31,15 @@ jobs:
 
       - name: Install frontend dependencies
         run: npm install
-        working-directory: ./
+        working-directory: ./frontend
 
       - name: Run frontend tests
         run: npm test -- --watchAll=false
-        working-directory: ./
+        working-directory: ./frontend
 
       - name: Install backend dependencies
         run: npm install
-        working-directory: ./backend-node
+        working-directory: ./backend
+
+
 
