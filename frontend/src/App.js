@@ -4,9 +4,10 @@ import DiscountList from './DiscountList';
 function App() {
   return (
     <div className="App">
-      <DiscountList />
+      <AuthForm />
     </div>
   );
 }
 
 export default App;
+import AuthForm from './AuthForm';
