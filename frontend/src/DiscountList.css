@@ -1,0 +1,56 @@
+
+/* Minimalist flat green theme */
+.discount-list-container {
+  background: #e8f5e9;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 8px rgba(60, 120, 60, 0.08);
+}
+.discount-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.discount-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #a5d6a7;
+  color: #1b5e20;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.discount-item:hover {
+  background: #81c784;
+}
+.discount-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #256029;
+}
+.discount-details {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  font-size: 1rem;
+}
+.discount-value {
+  background: #388e3c;
+  color: #fff;
+  padding: 0.3em 0.8em;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.discount-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 0.95rem;
+  color: #388e3c;
+}
