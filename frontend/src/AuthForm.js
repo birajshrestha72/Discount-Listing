@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+const axios = require('axios');
 import './AuthForm.css';
 
 const AuthForm = () => {
