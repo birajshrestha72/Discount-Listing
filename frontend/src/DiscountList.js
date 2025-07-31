@@ -5,7 +5,7 @@ function DiscountList() {
   const [discounts, setDiscounts] = useState([]);
 
   useEffect(() => {
-    fetch('/api/discounts')
+    fetch('/api/items')
       .then(res => res.json())
       .then(data => setDiscounts(data));
   }, []);

@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useState } from 'react';
 import DiscountList from './DiscountList';
 import AuthForm from './AuthForm';

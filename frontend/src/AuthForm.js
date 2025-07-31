@@ -4,7 +4,7 @@ import './AuthForm.css';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
@@ -13,7 +13,14 @@ const AuthForm = () => {
     setMessage('');
     try {
       const url = isLogin ? '/api/auth/login' : '/api/auth/signup';
-      const res = await axios.post(url, { username, password });
+      let payload;
+      if (isLogin) {
+        payload = { email, password };
+      } else {
+        // For signup, you may want to collect shop_name and phone as well
+        payload = { shop_name: 'Shop', email, phone: '0000000000', password };
+      }
+      const res = await axios.post(url, payload);
       setMessage(res.data.message);
     } catch (err) {
       setMessage(err.response?.data?.error || 'Error');
@@ -25,10 +32,10 @@ const AuthForm = () => {
       <form className="auth-form" onSubmit={handleSubmit}>
         <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
         <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
