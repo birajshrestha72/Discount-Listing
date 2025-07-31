@@ -46,9 +46,14 @@ const AuthForm = () => {
           required
         />
         <button type="submit">{isLogin ? 'Login' : 'Sign Up'}</button>
-        <p className="toggle" onClick={() => setIsLogin(!isLogin)}>
+        <button
+          type="button"
+          className="toggle"
+          onClick={() => setIsLogin(!isLogin)}
+          style={{ background: 'none', border: 'none', color: '#56ab2f', cursor: 'pointer', fontSize: '0.95rem', marginBottom: '0.5rem', textAlign: 'center', padding: 0 }}
+        >
           {isLogin ? 'No account? Sign Up' : 'Have an account? Login'}
-        </p>
+        </button>
         {message && <p className="message">{message}</p>}
       </form>
     </div>
